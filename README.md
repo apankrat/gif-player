@@ -1,9 +1,7 @@
 An on-demand GIF loader for HTML. Depends on jQuery.
 
-Demos:
+- [demo-plain.html](http://v4.swapped.cc/content/gif-player/demo-plain.html)
 
-- [barebone](http://v4.swapped.cc/tmp/gif-player-plain.html)
-
-- [fancypants](http://v4.swapped.cc/tmp/gif-player-fancy.html)
+- [demo-fancy.html](http://v4.swapped.cc/content/gif-player/demo-fancy.html)
 
 See [homepage](http://v4.swapped.cc/gif-player) for details.
