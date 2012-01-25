@@ -1,0 +1,73 @@
+<!doctype html public "-//w3c//dtd html 4.01//en" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+    <title>gif player | alex pankratov</title>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="gif-player.js"></script>
+
+    <style>
+    <!--
+		body {
+			padding: 50px;
+			font-family: calibri;
+			font-size: 15px;
+		}
+
+		.gif-player span {
+			display: none;
+		}
+		
+		.gif-ctrl {
+			cursor: pointer;
+			color: #05f;
+		}
+
+		/* control buttons - load, cancel, play, stop */
+		.gif-player-e .gif-ctrl-l { display: inline; }
+		.gif-player-l .gif-ctrl-c { display: inline; }
+		.gif-player-s .gif-ctrl-p { display: inline; }
+		.gif-player-p .gif-ctrl-s { display: inline; }
+
+		/* status messages - empty, loading, stopped, playing */
+		.gif-player-e .gif-info-e { display: inline; }
+		.gif-player-l .gif-info-l { display: inline; }
+		.gif-player-s .gif-info-s { display: inline; }
+		.gif-player-p .gif-info-p { display: inline; }
+
+    -->
+    </style>
+
+</head>
+
+<body>
+</body>
+
+	<div class=gif-player>
+		<img class="gif-still gif-ctrl" src="images/still.png">
+		<img class="gif-movie gif-ctrl"	gif="images/movie.gif">
+		<div>
+			State: 
+			<span class=gif-info-e>ready to load</span>
+			<span class=gif-info-l>loading ...</span>
+			<span class=gif-info-s>ready to play</span>
+			<span class=gif-info-p>playing</span>
+		</div>
+		<div class=gif-ctrl>
+			<span class=gif-ctrl-l>Load</span>
+			<span class=gif-ctrl-c>Cancel</span>
+			<span class=gif-ctrl-p>Play</span>
+			<span class=gif-ctrl-s>Stop</span>
+		</div>
+	</div>
+
+	<br><br>
+	<br><br>
+	<a href="http://swapped.cc/gif-player" 
+	   style="text-decoration: none; color: #05f;">
+	   swapped.cc/gif-player</a>
+
+</body>
+</html>
+
