@@ -42,7 +42,6 @@
 </head>
 
 <body>
-</body>
 
 	<div class=gif-player>
 		<img class="gif-still gif-ctrl" src="images/still.png">
@@ -61,6 +60,18 @@
 			<span class=gif-ctrl-s>Stop</span>
 		</div>
 	</div>
+
+	<script>
+		$(document).ready( function(){
+
+			$('.gif-player').each(function(){
+
+				var self = $(this);
+				this.gp = new gifPlayer(self, { autoplay: false });
+
+			});
+		});
+	</script>
 
 	<br><br>
 	<br><br>
