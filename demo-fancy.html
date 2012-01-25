@@ -1,0 +1,125 @@
+<!doctype html public "-//w3c//dtd html 4.01//en" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+	<title>gif player | alex pankratov</title>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="gif-player.js"></script>
+
+	<style>
+	<!--
+		body {
+			padding: 20px;
+			margin: 0;
+
+			font-family: calibri;
+			font-size: 15px;
+
+			background-image: url("images/back.png");
+		}
+
+		.gif-player {
+			width: 320px;
+			height: 290px;
+
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin: -135px 0 0 -160px;
+		}
+
+		.gif-player .canvas {
+			background: #111;
+			box-shadow: 0px 1px 3px #888;
+			margin-bottom: 10px;
+			border: 10px solid white;
+		}
+
+		.gif-player .canvas img {
+			display: block;
+		}
+
+		.gif-ctrl div {
+			display: none;
+			margin: 0 auto;
+			width: 34px;
+			height: 33px;
+			background-image: url('images/buttons.png');
+			cursor: pointer;
+		}
+
+		.gif-ctrl-l       { background-position:   0px 0px }
+		.gif-ctrl-l:hover { background-position: -34px 0px }
+		
+		.gif-ctrl-c       { 
+			background-image: url('images/cancel.gif') !important;
+		}
+
+		.gif-ctrl-c:hover { 
+			background-image: url('images/buttons.png') !important;
+			background-position: -34px -34px;
+		}
+		
+		.gif-ctrl-p       { background-position:   0px 0px }
+		.gif-ctrl-p:hover { background-position: -34px 0px }
+		
+		.gif-ctrl-s       { background-position:   0px -68px }
+		.gif-ctrl-s:hover { background-position: -34px -68px }
+		
+		.gif-player-e .gif-ctrl-l { display: block; } /* load */
+		.gif-player-l .gif-ctrl-c { display: block; } /* cancel */
+		.gif-player-s .gif-ctrl-p { display: block; } /* play */
+		.gif-player-p .gif-ctrl-s { display: block; } /* stop */
+
+	-->
+	</style>
+
+</head>
+
+<body>
+<div id=cont>
+
+	<div class=gif-player>
+		<div class=canvas>
+			<img class="gif-still gif-ctrl" src="images/still.png">
+			<img class="gif-movie gif-ctrl" gif="images/movie.gif">
+		</div>
+		<div class=gif-ctrl>
+			<div class=gif-ctrl-l></div>
+			<div class=gif-ctrl-c></div>
+			<div class=gif-ctrl-p></div>
+			<div class=gif-ctrl-s></div>
+		</div>
+	</div>
+
+	<a href=/ style="text-decoration: none; color: #555">swapped.cc</a>
+
+
+	<script>
+		$(document).ready( function(){
+
+			var i = new Image;
+			i.src = 'images/cancel.gif';
+
+			$('.gif-player').each(function(){
+
+				function swapWithFade(a,b) {
+					a.fadeOut('fast', function(){ 
+						b.fadeIn('fast'); 
+					});
+				}
+				
+				var self = $(this);
+				this.gp = new gifPlayer(self, {
+					play: swapWithFade,
+					stop: swapWithFade });
+			});
+
+		});
+	</script>
+
+</div>
+</body>
+</html>
+
