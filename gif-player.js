@@ -69,7 +69,7 @@ function gifPlayer(cont, opts) {
 
 		case 's': /* stopped, ready to play */
 
-			/* this rewinds the gif, firefox only */
+			/* this rewinds the gif, not in all browsers */
 			m.attr('src', null).attr('src', i.src);
 			
 			setState('s', 'p');
