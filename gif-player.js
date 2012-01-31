@@ -16,8 +16,8 @@ function gifPlayer(cont, opts) {
 	/* parameters */
 	var defaults = {
 		autoplay: true,
-		play:     function(s, m) { s.hide(); m.show() },
-		stop:     function(m, s) { m.hide(); s.show() }
+		play:     function(s,m,b) { s.hide(); m.show() },
+		stop:     function(m,s,b) { m.hide(); s.show() }
 	};
 
 	var opts = $.extend({}, defaults, opts);
@@ -27,7 +27,9 @@ function gifPlayer(cont, opts) {
 	var s = cont.find('.gif-still');
 	var m = cont.find('.gif-movie');
 	var i = new Image;
+
 	var state = 'e';
+	var busy = false;
 
 	/* functions */
 	var setState = function(was, now) {
@@ -38,6 +40,9 @@ function gifPlayer(cont, opts) {
 
 	this.act = function()
 	{
+		if (busy)
+			return;
+
 		switch (state)
 		{
 
@@ -52,7 +57,7 @@ function gifPlayer(cont, opts) {
 				if (opts['autoplay'])
 				{
 					setState('l','p');
-					opts['play'](s, m);
+					opts['play'](s, m, busy);
 				}
 				else
 					setState('l','s');
@@ -73,13 +78,13 @@ function gifPlayer(cont, opts) {
 			m.attr('src', null).attr('src', i.src);
 			
 			setState('s', 'p');
-			opts['play'](s, m);
+			opts['play'](s, m, busy);
 			break;
 		
 		case 'p': /* playing... */
 
 			setState('p', 's');
-			opts['stop'](m, s);
+			opts['stop'](m, s, busy);
 			break;
 		}
 	}
