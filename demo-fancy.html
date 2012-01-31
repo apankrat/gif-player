@@ -40,8 +40,7 @@
 			display: block;
 		}
 
-		.gif-ctrl div {
-			display: none;
+		.gif-ctrl {
 			margin: 0 auto;
 			width: 34px;
 			height: 33px;
@@ -49,28 +48,36 @@
 			cursor: pointer;
 		}
 
-		.gif-ctrl-l       { background-position:   0px 0px }
-		.gif-ctrl-l:hover { background-position: -34px 0px }
-		
-		.gif-ctrl-c       { 
+		/*
+		 *	"Empty" state, show "load" button
+		 */
+		.gif-player-e .gif-ctrl       { background-position:   0px 0px }
+		.gif-player-e .gif-ctrl:hover { background-position: -34px 0px }
+
+		/*
+		 *	"Loading" state, show "cancel" button
+		 */
+		.gif-player-l .gif-ctrl {
 			background-image: url('images/cancel.gif') !important;
+			background-position: 0px 0px;
 		}
 
-		.gif-ctrl-c:hover { 
+		.gif-player-l .gif-ctrl:hover {
 			background-image: url('images/buttons.png') !important;
 			background-position: -34px -34px;
 		}
-		
-		.gif-ctrl-p       { background-position:   0px 0px }
-		.gif-ctrl-p:hover { background-position: -34px 0px }
-		
-		.gif-ctrl-s       { background-position:   0px -68px }
-		.gif-ctrl-s:hover { background-position: -34px -68px }
-		
-		.gif-player-e .gif-ctrl-l { display: block; } /* load */
-		.gif-player-l .gif-ctrl-c { display: block; } /* cancel */
-		.gif-player-s .gif-ctrl-p { display: block; } /* play */
-		.gif-player-p .gif-ctrl-s { display: block; } /* stop */
+	
+		/*
+		 *	"Stopped" state, show "play" button
+		 */
+		.gif-player-s .gif-ctrl       { background-position:   0px 0px }
+		.gif-player-s .gif-ctrl:hover { background-position: -34px 0px }
+
+		/*
+		 *	"Playing" state, show "stop" button
+		 */
+		.gif-player-p .gif-ctrl       { background-position:   0px -68px }
+		.gif-player-p .gif-ctrl:hover { background-position: -34px -68px }
 
 	-->
 	</style>
@@ -82,14 +89,10 @@
 
 	<div class=gif-player>
 		<div class=canvas>
-			<img class="gif-still gif-ctrl" src="images/still.png">
-			<img class="gif-movie gif-ctrl" gif="images/movie.gif">
+			<img class="gif-still" src="images/still.png">
+			<img class="gif-movie" gif="images/movie.gif">
 		</div>
 		<div class=gif-ctrl>
-			<div class=gif-ctrl-l></div>
-			<div class=gif-ctrl-c></div>
-			<div class=gif-ctrl-p></div>
-			<div class=gif-ctrl-s></div>
 		</div>
 	</div>
 
@@ -99,9 +102,11 @@
 	<script>
 		$(document).ready( function(){
 
+			/* preload the spinner */
 			var i = new Image;
 			i.src = 'images/cancel.gif';
 
+			/* instantiate player(s) */
 			$('.gif-player').each(function(){
 
 				function swapWithFade(a,b) {
