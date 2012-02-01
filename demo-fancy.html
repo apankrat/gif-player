@@ -109,12 +109,9 @@
 			/* instantiate player(s) */
 			$('.gif-player').each(function(){
 
-				function swapWithFade(i1,i2,busy) {
-					busy = true;
+				function swapWithFade(i1,i2,done) {
 					i1.fadeOut('fast', function(){ 
-						i2.fadeIn('fast', function(){
-							busy = false;
-						});
+						i2.fadeIn('fast',done);
 					});
 				}
 				
